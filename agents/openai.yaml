@@ -1,0 +1,7 @@
+interface:
+  display_name: "三橙 B-roll 分镜与动画"
+  short_description: "按 SRT 设计口播分镜，用本地工具制作动画并接入现有剪映流程"
+  default_prompt: "使用 $sancheng-broll-animation，按我提供的 SRT 为当前剪映口播制作完整同步的 B-roll 和解释性动画。"
+
+policy:
+  allow_implicit_invocation: true

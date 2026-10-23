@@ -2,6 +2,8 @@
 
 ## 工具选择与依赖
 
+积木人物、完整积木场景、生产线和机械动作默认先读 [Blender 制作流程](blender-workflow.md)，使用真实三维模型、材质、灯光和关键帧。以下网页路径用于适合的二维图示、截图和文字，不替代积木场景制作。
+
 用当前可执行的 FFmpeg/FFprobe 做媒体裁切、蒙版、声音和装配；用本仓库的 Node 渲染器做 HTML/SVG/Canvas 图形。Python 3 脚本只用标准库。Node 需支持 ES modules，渲染器需能够解析已安装的 Playwright，并找到对应 Chromium。
 
 先查系统 PATH、项目已有依赖和执行文件，再选路径。`--ffmpeg` 接收可执行文件的路径；`--playwright-from` 接收已安装 Playwright 的项目 `package.json` 路径。后者只作为 Node 模块解析起点，不是读取项目凭据。工具缺失时说明缺什么；安装运行时是单独的环境操作，不在渲染过程中偷偷下载。

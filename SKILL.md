@@ -16,6 +16,10 @@ license: MIT
 
 积木人物、完整积木场景、生产线与机械动作，默认按 [Blender 制作流程](references/blender-workflow.md) 使用真实三维模型、材质、灯光和关键帧制作。复用已跑通的场景模板并在本次项目中改造；截图、流程图和文字包装仍按其内容选择工具。这个默认不强制所有口播改为积木风格，也不承诺任意动作一键生成。
 
+## 优化与迭代默认路径
+
+制作或返修积木人物、供料/装配场景，先读 [优化迭代方案](references/iteration-and-quality.md)：采用固定骨长与接触目标、实体供料和共享事件时序，再处理镜头、声音与材质；以已完成的 14 秒重制案例为当前基线。先验证实际缺陷的修正，再扩展复用；把已实现、局部验证、待开发和用户视觉反馈分开记录。旧 9 秒模板仅复用几何，不沿用手臂拉伸和顶盖缩放出场。
+
 ## 入口
 
 先区分本次是解释方法、设计分镜、制作素材，还是修改工程。说明方法与维护 skill 不操作视频；要求实际制作时继续完成已授权的工作。
@@ -37,7 +41,8 @@ license: MIT
 
 ## 工具与边界
 
-- `assets/blender/brick_factory.py`、`assets/blender/mechanical_foley.py` 是已完成案例的三维场景与合成机械声模板。先复制到任务工作目录再修改；固定 9 秒、24fps，支持新项目路径、画幅、采样和渲染模式，不是任意脚本自动转三维引擎。
+- `assets/blender/press_line_remake.py`、`press_line_events.json`、`press_line_sound.py`、`pack_scene_audio.py`：14 秒重制案例的模型/控制、共用时序、机械声与工程音频打包源码。运行前按优化迭代方案生成几何种子，在任务副本中按本次内容改造；不是任意口播自动生成器。
+- `assets/blender/brick_factory.py`、`mechanical_foley.py`：旧 9 秒案例；前者仍供新模板复用几何，旧动作和旧声音不作为本轮优化效果。
 
 - `scripts/srt_timeline.py` 输出时间底稿、空档和重叠，不自动生成语义分镜。
 - `scripts/render_alpha.mjs` 将实现 `window.renderAt(t)` 的本地网页图形逐帧渲染为无声 QTRLE/ARGB MOV。需要已安装的 Node、Playwright、Chromium 和 FFmpeg，不下载依赖。

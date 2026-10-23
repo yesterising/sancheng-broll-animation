@@ -37,17 +37,18 @@ git clone https://github.com/yesterising/sancheng-broll-animation.git "${CODEX_H
 
 ## Blender 积木动画默认路径
 
-已完成的案例是“人物走近控制台 → 按按钮 → 指示灯亮起 → 传送带启动 → 产品装配 → 运转全景”，9 秒、720p、24fps。场景与声音源码随仓库提供，无需第三方角色模型或付费生成服务；不捆绑 Blender 安装包和渲染成品。
+当前基线为已完成的 14 秒、720p、24fps 重制案例：人物按键 → 底件进站停稳 → 吸盘从料架取盖并转运放料 → 吸盘退出 → 压头压合 → 成品输出。固定骨长右臂、实体零件和传动共用事件时序，带原创本地合成机械声，保留声音已打包的 Blender 工程。动作、镜头与声音源码随仓库提供，不捆绑运行时、第三方资产或渲染成品。
 
-复制 [积木工厂模板](assets/blender/brick_factory.py) 到项目的 `work/brick_factory.py` 后，可运行：
+制作/返修时先读 [完整优化迭代方案](references/iteration-and-quality.md)，再按 [Blender 制作流程](references/blender-workflow.md) 执行。旧 `brick_factory.py` 只作为几何种子；新 `press_line_remake.py` 会重建固定骨长控制与工作单元。复制源码到任务工作目录后，先创建种子，再创建新工程：
 
 ```bash
-blender --background --factory-startup --python work/brick_factory.py -- --project-dir work/brick-project --render
+blender --background --factory-startup --python-exit-code 1 --python work/brick_factory.py -- --project-dir work/seed
+blender --background work/seed/brick_factory.blend --python-exit-code 1 --python work/press_line_remake.py -- --project-dir work/remake
 ```
 
-输出新的 `.blend` 工程与 216 帧 PNG，再用本地媒体工具合成视频。该模板固定 9 秒、24fps；新的主题由 agent 修改模型、动作和镜头，不能只换标题重复工厂案例。独立积木动画不需要口播 SRT，接入实际口播时才使用对应 SRT。
+继续按方案生成完整 PNG 序列、机械声并编码，人物布局与素材交付沿用 [自动导演规则](references/automatic-direction.md)。本例固定 14 秒、24fps；新主题需 agent 同步改模型、动作、相机与声音，不是任意口播一键转三维。独立动画不需要 SRT，接入口播才使用对应字幕。
 
-完整方法、构图修正、装配行程、依赖定位、透明边界和示例命令见 [Blender 制作流程](references/blender-workflow.md)、[自动导演规则](references/automatic-direction.md)。
+优化记录区分已实现、局部验证、待开发和用户实际反馈。完整步态、通用动作库、自动三维缓存与本地视频大模型仍未作为默认生产能力；不能把技术通过说成用户已认可画面。
 
 ## 运行依赖
 
@@ -74,6 +75,6 @@ blender --background --factory-startup --python work/brick_factory.py -- --proje
 
 ## 验证与许可
 
-发布时验证了 SRT 的中文/多行原文、BOM/CRLF、空档/重叠、分数帧率、异常输入、时长错配与拒绝覆盖；使用合成图形验证了渲染器的绝对时间运动、QTRLE/ARGB 输出和全透明/半透明像素。另已完成 Blender 9 秒积木工厂动画的建模、关键帧、216 帧渲染与视频合成，并验证了可移植模板的新项目创建和单帧渲染。未以此声称完成真实口播案例、剪映导入、所有动作或跨平台兼容验收；当前渲染路径在 macOS 验证。
+发布时验证了 SRT 的中文/多行原文、BOM/CRLF、空档/重叠、分数帧率、异常输入、时长错配与拒绝覆盖；使用合成图形验证了渲染器的绝对时间运动、QTRLE/ARGB 输出和全透明/半透明像素。另已完成旧 9 秒案例及新 14 秒重制动画的完整渲染与带声视频合成；新模板验证新工程创建、固定骨长/接触、单帧渲染、机械声生成与音频打包。未以此声称完成真实口播案例、剪映导入、所有动作或跨平台兼容验收；当前渲染路径在 macOS 验证。
 
 仓库自有文本与脚本使用 [MIT License](LICENSE)。未包含第三方 skill 原文件、用户媒体、字体、音效或运行时；实际制作素材和依赖各自遵守其许可。

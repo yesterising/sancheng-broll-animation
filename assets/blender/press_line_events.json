@@ -1,0 +1,23 @@
+{
+  "duration": 14,
+  "fps": 24,
+  "look": [0.45, 1.1],
+  "reach": [1.25, 1.95],
+  "button_down": [2.0, 2.18],
+  "button_up": [2.4, 2.58],
+  "withdraw": [2.7, 3.35],
+  "belt_in": [2.45, 4.5],
+  "grip_down": [3.15, 3.7],
+  "grip_lift": [3.9, 4.5],
+  "grip_transfer": [4.65, 5.8],
+  "grip_place": [5.95, 6.6],
+  "grip_release": 6.85,
+  "grip_clear": [6.85, 7.4],
+  "grip_return": [7.4, 8.2],
+  "press_approach": [8.35, 8.95],
+  "press_fit": [8.95, 9.18],
+  "press_retract": [9.5, 10.1],
+  "belt_out": [10.3, 12.85],
+  "scan": 12.2,
+  "cuts": [0, 1.2, 3.0, 5.8, 10.3]
+}
